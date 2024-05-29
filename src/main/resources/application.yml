@@ -1,0 +1,14 @@
+spring:
+  rabbitmq:
+    host: ${RBMQ_HOST}
+    port: ${RBMQ_PORT}
+    username: ${RBMQ_USER}
+    password: ${RBMQ_PSWD}
+
+rabbitmq:
+  queue:
+    name: sample-queue # 사용할 큐 이름
+  exchange:
+    name: sample-exchange # 사용할 exchange 이름
+  routing:
+    key: key
