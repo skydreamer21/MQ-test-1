@@ -27,7 +27,7 @@ public class RabbitmqService {
                 rabbitmqBindingProperties.getRoutingKey(), messageDto);
     }
 
-    @RabbitListener(queues = "#{rabbitmqService.messageDto.queuename}")
+    @RabbitListener(queues = "#{rabbitmqBindingProperties.queueName}")
     public void receiveMessage(MessageDto messageDto) {
         log.info("Received Message : {}", messageDto);
     }
