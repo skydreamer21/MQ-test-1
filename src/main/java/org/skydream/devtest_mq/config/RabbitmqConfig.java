@@ -45,6 +45,7 @@ public class RabbitmqConfig {
     }
 
     // RabbitMQ 연동을 위한 ConnectionFactory 빈을 생성하여 반환
+    // STUDY: ConnectionFactory가 뭘까? RabbitMQ 연동을 위해 어떤 역할은 하는 건가?
     @Bean
     public CachingConnectionFactory connectionFactory() {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
