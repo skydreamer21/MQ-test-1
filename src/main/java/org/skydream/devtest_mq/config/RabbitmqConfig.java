@@ -20,28 +20,21 @@ public class RabbitmqConfig {
 
     private final RabbitmqProperties rabbitmqProperties;
 
-    @Value("${rabbitmq.queue.name}")
-    private String queueName;
-
-    @Value("${rabbitmq.exchange.name}")
-    private String exchangeName;
-
-    @Value("${rabbitmq.routing.key}")
-    private String routingKey;
+    private final RabbitmqBindingProperties rabbitmqBindingProperties;
 
     @Bean
     public Queue queue() {
-        return new Queue(queueName);
+        return new Queue(rabbitmqBindingProperties.getQueueName());
     }
 
     @Bean
     public DirectExchange directExchange() {
-        return new DirectExchange(exchangeName);
+        return new DirectExchange(rabbitmqBindingProperties.getExchangeName());
     }
 
     @Bean
     public Binding binding(Queue queue, DirectExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(routingKey);
+        return BindingBuilder.bind(queue).to(exchange).with(rabbitmqBindingProperties.getRoutingKey());
     }
 
     // RabbitMQ 연동을 위한 ConnectionFactory 빈을 생성하여 반환
